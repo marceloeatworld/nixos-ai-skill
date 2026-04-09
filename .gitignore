@@ -1,0 +1,6 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files from generate script
+/tmp/
