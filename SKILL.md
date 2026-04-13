@@ -1,25 +1,6 @@
 ---
 name: nixos
-description: >-
-  This skill should be used when the user asks about "NixOS configuration",
-  "configuration.nix", "nix-rebuild", "nixos-rebuild", "NixOS modules",
-  "NixOS options", "NixOS installation", "NixOS upgrade", "NixOS containers",
-  "Nix language", "Nix expression", "Nix flakes", "flake.nix", "flake.lock",
-  "nixpkgs", "nix-shell", "nix develop", "nix build", "nix run", "nix store",
-  "nix-env", "nix-channel", "derivations", "mkDerivation", "stdenv",
-  "callPackage", "override", "overlays", "NixOS networking", "NixOS firewall",
-  "NixOS systemd services", "NixOS filesystems", "NixOS LUKS encryption",
-  "NixOS Wayland", "NixOS X11", "NixOS packages", "NixOS user management",
-  "NixOS kernel", "NixOS profiles", "NixOS testing", "NixOS VM tests",
-  "home-manager", "devenv", "direnv with nix", "nix-ld", "nix-darwin",
-  "Nix binary cache", "Nix garbage collection", "Nix cross-compilation",
-  "packaging for nixpkgs", "Nix Pills", "NixOS release process",
-  "NixOS Docker images", "NixOS ISO image", "NixOS Raspberry Pi",
-  "NixOS Terraform", "NixOS distributed builds", "NixOS remote machines",
-  "pinning nixpkgs", "Nix best practices", "Nix troubleshooting",
-  "Nix glossary", "NixOS FAQ", "NixOS rollback", "NixOS generations",
-  or any topic related to configuring, packaging, deploying, or troubleshooting
-  NixOS and the Nix ecosystem.
+description: Use when the user asks about NixOS, Nix language, flakes, nixpkgs, configuration.nix, nixos-rebuild, modules, options, overlays, derivations, mkDerivation, callPackage, home-manager, nix-darwin, devenv, packaging, cross-compilation, binary caches, garbage collection, NixOS containers, networking, firewall, systemd services, filesystems, LUKS, Wayland, X11, kernel, profiles, NixOS testing or VM tests, ISO images, Docker images, Raspberry Pi, Terraform, distributed builds, remote machines, pinning nixpkgs, rollback, generations, Nix Pills, or any topic related to configuring, packaging, deploying, or troubleshooting NixOS and the Nix ecosystem.
 version: 0.1.0
 ---
 
