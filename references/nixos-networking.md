@@ -123,16 +123,9 @@ servers:
 ```
 
 ::: {.note}
-Addresses and routes for statically configured interfaces and the default
-gateway are set up by systemd services named
-`network-addresses-<interface>.service`. The name servers configuration,
-instead, is performed by `network-local-commands.service` using resolvconf.
-:::
-
-::: {.note}
-If needed, for example if addresses/routes were added/removed,
-you can reset the network configuration by running
-`systemctl restart networking-scripted.target`
+Statically configured interfaces are set up by the systemd service
+`interface-name-cfg.service`. The default gateway and name server
+configuration is performed by `network-setup.service`.
 :::
 
 The host name is set using [](#opt-networking.hostName):
@@ -476,28 +469,18 @@ wpa_supplicant.
 
 # Ad-Hoc Configuration {#ad-hoc-network-config}
 
-You can use [](#opt-networking.localCommands) to specify shell commands to be
-run after the network interfaces have been created, but not necessarily fully
-configured.
-This is useful for doing network configuration not covered by the existing
-NixOS modules. For example, you can create a network namespace and a pair
-of virtual ethernet devices like this:
+You can use [](#opt-networking.localCommands) to
+specify shell commands to be run at the end of `network-setup.service`. This
+is useful for doing network configuration not covered by the existing NixOS
+modules. For instance, to statically configure an IPv6 address:
 
 ```nix
 {
   networking.localCommands = ''
-    ip netns add mynet
-    ip link add name veth-in type veth peer name veth-out
-    ip link set dev veth-out netns mynet
+    ip -6 addr add 2001:610:685:1::1/64 dev eth0
   '';
 }
 ```
-
-::: {.note}
-The commands should ideally be idempotent, so it's recommended to perform
-cleanups of the state you create (e.g. virtual interfaces), or at least make
-sure possible failures are handled.
-:::
 
 ---
 
