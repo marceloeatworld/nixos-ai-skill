@@ -2332,7 +2332,7 @@ in
       default = { };
       description = ''
         Configuration for foo, see
-        <link xlink:href="https://example.com/docs/foo"/>
+        <https://example.com/docs/foo/>
         for supported settings.
       '';
     };
@@ -2407,7 +2407,7 @@ up in the manual.
     default = { };
     description = ''
       Configuration for Foo, see
-      <link xlink:href="https://example.com/docs/foo"/>
+      <https://example.com/docs/foo>
       for supported values.
     '';
   };
