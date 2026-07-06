@@ -113,7 +113,7 @@ let
     inherit system;
   };
 in
-pkgs.callPackage ./build.nix { }
+pkgs.callPackage ./package.nix { }
 ```
 
 Add two source files to work with:

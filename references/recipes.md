@@ -517,12 +517,12 @@ Use the [`inputsFrom` attribute to `pkgs.mkShellNoCC`](https://nixos.org/manual/
 # default.nix
 let
   pkgs = import <nixpkgs> {};
-  build = pkgs.callPackage ./build.nix {};
+  myPackage = pkgs.callPackage ./package.nix {};
 in
 {
-  inherit build;
+  inherit myPackage;
   shell = pkgs.mkShellNoCC {
-    inputsFrom = [ build ];
+    inputsFrom = [ myPackage ];
   };
 }
 ```
@@ -536,10 +536,10 @@ Import the `shell` attribute in `shell.nix`:
 
 ## Complete example
 
-Assume your build is defined in `build.nix`:
+Assume your package is defined in `package.nix`:
 
 ```nix
-# build.nix
+# package.nix
 { cowsay, runCommand }:
 runCommand "cowsay-output" { buildInputs = [ cowsay ]; } ''
   cowsay Hello, Nix! > $out
@@ -557,7 +557,7 @@ let
   pkgs = import nixpkgs { config = {}; overlays = []; };
 in
 {
-  build = pkgs.callPackage ./build.nix {};
+  myPackage = pkgs.callPackage ./package.nix {};
 }
 ```
 
@@ -570,26 +570,26 @@ Add an attribute to `default.nix` specifying an environment:
    pkgs = import nixpkgs { config = {}; overlays = []; };
  in
  {
-   build = pkgs.callPackage ./build.nix {};
+   myPackage = pkgs.callPackage ./package.nix {};
 +  shell = pkgs.mkShellNoCC {
 +  };
  }
 ```
 
-Move the `build` attribute into the `let` binding to be able to re-use it.
+Move the `myPackage` attribute into the `let` binding to be able to re-use it.
 Then take the package's dependencies into the environment with [`inputsFrom`](https://nixos.org/manual/nixpkgs/stable/#sec-pkgs-mkShell-attributes):
 
 ```diff
  let
    nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-23.11";
    pkgs = import nixpkgs { config = {}; overlays = []; };
-+  build = pkgs.callPackage ./build.nix {};
++  myPackage = pkgs.callPackage ./package.nix {};
  in
  {
--  build = pkgs.callPackage ./build.nix {};
-+  inherit build;
+-  myPackage = pkgs.callPackage ./package.nix {};
++  inherit myPackage;
    shell = pkgs.mkShellNoCC {
-+    inputsFrom = [ build ];
++    inputsFrom = [ myPackage ];
    };
  }
 ```
