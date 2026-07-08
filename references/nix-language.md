@@ -42,7 +42,7 @@ This is an introduction to **reading the Nix language**, for the purpose of foll
 - Language: syntax and semantics
 - Libraries: `builtins` and `pkgs.lib`
 - Developer tools: testing, debugging, linting, formatting, ...
-- Generic build mechanisms: `stdenv.mkDerivation`, trivial builders, ...
+- Generic build mechanisms: `stdenv.mkDerivation`, build helpers, ...
 - Composition and configuration mechanisms: `override`, `overrideAttrs`, overlays, `callPackage`, ...
 - Ecosystem-specific packaging mechanisms: `buildGoModule`, `buildPythonApplication`, ...
 - NixOS module system: `config`, `option`, ...
@@ -315,12 +315,11 @@ Nix language data types *without functions* work just like their counterparts in
 ::::
 
 :::{note}
-- Attribute names usually do not need quotes.[^attrnames]
-- List elements are separated by white space.[^list-whitespace]
+- [Attribute set syntax](https://nix.dev/manual/nix/stable/language/syntax#attrs-literal): attribute names usually do not need quotes
+- [List syntax](https://nix.dev/manual/nix/stable/language/syntax#list-literal): list elements are separated by white space
 :::
 
-[^attrnames]: Details: [Nix manual - attribute set](https://nix.dev/manual/nix/stable/language/syntax#attrs-literal)
-[^list-whitespace]: Details: [Nix manual - list](https://nix.dev/manual/nix/stable/language/syntax#list-literal)
+
 
 (rec-attrset)=
 #### Recursive attribute set `rec { ... }`
@@ -2119,7 +2118,7 @@ Most names you will encounter in Nix language code come from Nixpkgs:
 Nixpkgs provides generic build mechanisms that are widely used:
 
 - [`stdenv`][stdenv] - most importantly `mkDerivation`
-- [Trivial Builders][trivial-builders] - to create files and shell scripts
+- [Build helpers][build-helpers] - for creating derivations, including shell scripts and single files
 
 Packages from Nixpkgs can be modified through multiple mechanisms:
 
@@ -2130,13 +2129,11 @@ Different language ecosystems and frameworks have different requirements to acco
 
 - [Languages and frameworks][language-support] lists tools provided by Nixpkgs to build language- or framework-specific packages with Nix.
 
-The NixOS Linux distribution has a modular configuration system that imposes its own conventions:
-
-- [NixOS modules][nixos-modules] shows how NixOS configurations are organized.
+The NixOS Linux distribution uses a [modular configuration system](module-system-tutorial) that imposes its own conventions.
 
 [nix-pills]: https://nixos.org/guides/nix-pills/
 [stdenv]: https://nixos.org/manual/nixpkgs/stable/#chap-stdenv
-[trivial-builders]: https://nixos.org/manual/nixpkgs/stable/#chap-trivial-builders
+[build-helpers]: https://nixos.org/manual/nixpkgs/stable/#part-builders
 [overlays]: https://nixos.org/manual/nixpkgs/stable/#chap-overlays
 [overrides]: https://nixos.org/manual/nixpkgs/stable/#chap-overrides
 [language-support]: https://nixos.org/manual/nixpkgs/stable/#chap-language-support
