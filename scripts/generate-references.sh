@@ -74,11 +74,14 @@ mkdir -p "$REFS_DIR"
 
 # ── Helpers ────────────────────────────────────────────────────────────
 
+MISSING_SOURCES=0
+
 # copy_page <source_file> <output_filename> <source_url> <repo_label>
 copy_page() {
     local src="$1" dst="$REFS_DIR/$2" url="$3" repo="$4"
     if [[ ! -f "$src" ]]; then
         echo "  WARN: $(basename "$src") not found, skipping"
+        MISSING_SOURCES=$((MISSING_SOURCES + 1))
         return
     fi
     {
@@ -93,7 +96,7 @@ copy_page() {
 
 # merge_pages <output_filename> <header> <source_url> <repo_label> <file1> [file2...]
 merge_pages() {
-    local dst="$REFS_DIR/$1" header="$2" url="$3" repo="$4"
+    local name="$1" dst="$REFS_DIR/$1" header="$2" url="$3" repo="$4"
     shift 4
     {
         echo "<!-- source: $url -->"
@@ -110,10 +113,11 @@ merge_pages() {
                 echo ""
             else
                 echo "  WARN: $(basename "$src") not found, skipping from merge" >&2
+                MISSING_SOURCES=$((MISSING_SOURCES + 1))
             fi
         done
     } > "$dst"
-    echo "  OK: $1 (merged)"
+    echo "  OK: $name (merged)"
 }
 
 echo ""
@@ -444,3 +448,9 @@ EOF
 TOTAL=$(find "$REFS_DIR" -name '*.md' | wc -l)
 echo "==> Done! Generated $TOTAL reference files."
 echo "    Output: $REFS_DIR/"
+
+if [[ $MISSING_SOURCES -gt 0 ]]; then
+    echo "ERROR: $MISSING_SOURCES source file(s) missing upstream (renamed or removed)." >&2
+    echo "Update the paths in this script, otherwise the affected references go stale." >&2
+    exit 1
+fi

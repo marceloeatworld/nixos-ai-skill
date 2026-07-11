@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Generate references from official repos
         run: bash scripts/generate-references.sh
@@ -25,7 +25,11 @@ jobs:
       - name: Check for changes
         id: changes
         run: |
-          git diff --quiet references/ && echo "changed=false" >> "$GITHUB_OUTPUT" || echo "changed=true" >> "$GITHUB_OUTPUT"
+          if [ -z "$(git status --porcelain references/)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Commit and push
         if: steps.changes.outputs.changed == 'true'
