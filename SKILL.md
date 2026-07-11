@@ -1,7 +1,7 @@
 ---
 name: nixos
 description: Use when the user asks about NixOS, Nix language, flakes, nixpkgs, configuration.nix, nixos-rebuild, modules, options, overlays, derivations, mkDerivation, callPackage, home-manager, nix-darwin, devenv, packaging, cross-compilation, binary caches, garbage collection, NixOS containers, networking, firewall, systemd services, filesystems, LUKS, Wayland, X11, kernel, profiles, NixOS testing or VM tests, ISO images, Docker images, Raspberry Pi, Terraform, distributed builds, remote machines, pinning nixpkgs, rollback, generations, Nix Pills, or any topic related to configuring, packaging, deploying, or troubleshooting NixOS and the Nix ecosystem.
-version: 0.1.0
+version: 0.2.0
 ---
 
 # NixOS Documentation
@@ -15,18 +15,16 @@ Complete reference for NixOS and the Nix ecosystem, auto-generated from official
 
 The `references/` directory contains full, unmodified documentation from those sources, updated daily.
 
-## Directives
+## How to Use
 
-- Base all answers on the official NixOS documentation in the reference files below.
-- Use correct Nix language syntax (attribute sets, let-in, with, inherit, etc.).
-- Distinguish between **NixOS module options** (`services.nginx.enable = true;`) and **Nix language expressions** (`pkgs.mkDerivation { ... }`).
-- Show configuration examples using current NixOS syntax (`configuration.nix` or flake-based configs).
-- When flakes are relevant, show both the classic (channels) and flakes approach if applicable.
-- For packaging, prefer the `callPackage` pattern over raw `import`.
+1. Identify the topic from the user's question and read the matching reference file from the tables below.
+2. Base answers on those files. If more detail is needed, fetch the latest docs from the raw GitHub URLs in Live Fetching.
+3. Distinguish between **NixOS module options** (`services.nginx.enable = true;`) and **Nix language expressions** (`pkgs.mkDerivation { ... }`).
+4. Show examples using current syntax (`configuration.nix` or flake-based configs). When flakes are relevant, show both the classic (channels) and flakes approach.
+5. For packaging, prefer the `callPackage` pattern over raw `import`.
+6. Beginners: start with `references/first-steps.md` or `references/nix-pills.md`. Troubleshooting: check `references/troubleshooting.md` and `references/faq.md` first. System issues: `references/nixos-administration.md`.
 
 ## Reference Files
-
-Identify the topic from the user's question, then read the matching reference file:
 
 ### Getting Started
 
@@ -133,81 +131,4 @@ https://raw.githubusercontent.com/NixOS/nixpkgs/master/nixos/doc/manual/<section
 ### Nix Pills
 ```
 https://raw.githubusercontent.com/NixOS/nix-pills/master/pills/<NN>-<slug>.md
-```
-
-## Strategy
-
-1. Identify the topic from the user's question.
-2. Read the matching reference file from the tables above.
-3. Answer with correct Nix syntax and `configuration.nix` / `flake.nix` examples.
-4. If more detail is needed, fetch from the corresponding raw GitHub URL.
-5. For beginners, recommend starting with `references/first-steps.md` or `references/nix-pills.md`.
-6. For troubleshooting, check `references/troubleshooting.md` and `references/faq.md` first.
-7. For NixOS system issues, check `references/nixos-administration.md`.
-
-## Quick Reference
-
-### Config file location
-`/etc/nixos/configuration.nix` (classic) or `flake.nix` (flakes)
-
-### Rebuild system
-```bash
-sudo nixos-rebuild switch          # apply config
-sudo nixos-rebuild test            # apply without adding to bootloader
-sudo nixos-rebuild build           # build only
-sudo nixos-rebuild boot            # apply on next boot
-```
-
-### Nix shell (ad-hoc packages)
-```bash
-nix-shell -p python3 git vim       # classic
-nix shell nixpkgs#python3 nixpkgs#git  # flakes
-```
-
-### Nix develop (dev environment)
-```bash
-nix develop                        # from flake.nix devShell
-nix-shell                          # from shell.nix
-```
-
-### Search packages
-```bash
-nix search nixpkgs firefox
-# or https://search.nixos.org/packages
-```
-
-### Garbage collection
-```bash
-nix-collect-garbage -d             # delete all old generations
-nix store gc                       # flakes equivalent
-sudo nix-collect-garbage -d        # also clean system profiles
-```
-
-### Flake basic structure
-```nix
-{
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-  };
-  outputs = { self, nixpkgs }: {
-    nixosConfigurations.hostname = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [ ./configuration.nix ];
-    };
-  };
-}
-```
-
-### NixOS module syntax
-```nix
-{ config, pkgs, ... }:
-{
-  services.nginx.enable = true;
-  environment.systemPackages = with pkgs; [ vim git firefox ];
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
-  users.users.myuser = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
-  };
-}
 ```
