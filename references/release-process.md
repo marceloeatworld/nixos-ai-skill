@@ -580,6 +580,7 @@ These changes should be done when the two PRs are already merged.
 
 1. Update the `codeName` attribute in [`lib/trivial.nix`](https://github.com/NixOS/nixpkgs/commit/2c28f1de7cdc10be556d2106108411dd2482794b#diff-29c71aa8261b14b1cad6e6fa28486fed7295050db4eeb32ba205672ba91d40e1)
    This will be the name for the next release.
+   Make sure the new codename had not been used before.
 
 1. Evaluate Nixpkgs to check for mistakes:
    ```bash
@@ -618,6 +619,8 @@ Now that everything on git is done, we are still missing the channels.
 ### Once the channel is available
 
 The following steps should be done after the channels have become available on [channels.nixos.org](https://channels.nixos.org).
+
+1. Create the appropriate [redirects](https://github.com/NixOS/flake-registry/commit/122a9ae66c0121367e4e1d7fa2a9343762c7d6b1) in the [Nix flake registry](https://github.com/NixOS/flake-registry).
 
 1. Update the flake input on the `nixos-search` repository by running [the update-flake-lock](https://github.com/NixOS/nixos-search/actions/workflows/update-flake-lock.yml) and merging the new created PR afterwards.
 
