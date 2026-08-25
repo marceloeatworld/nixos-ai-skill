@@ -4,7 +4,13 @@
 
 (reading-nix-language)=
 
+
 # Nix language basics
+
+```{contributors}
+:authors: fricklerhandwerk
+:editors: infinisil
+```
 
 The Nix language is designed for conveniently creating and composing *derivations* – precise descriptions of how contents of existing files are used to derive new files.
 It is a domain-specific, purely functional, lazily evaluated, dynamically typed programming language.
@@ -1546,7 +1552,6 @@ builtins.toString
 <PRIMOP>
 ```
 
-[nix-operators]: https://nix.dev/manual/nix/stable/language/operators.html
 [nix-builtins]: https://nix.dev/manual/nix/stable/language/builtins.html
 
 (reading-nix-language-import)=
@@ -2065,6 +2070,7 @@ Explanation:
 
 - [Nix manual: Nix language][manual-language]
 - [Nix manual: String interpolation][manual-string-interpolation]
+- [Nix manual: Operators][operators]
 - [Nix manual: Built-in Functions][nix-builtins]
 - [Nix manual: `nix repl`][`nix repl`]
 - [Nixpkgs manual: Functions reference][nixpkgs-functions]

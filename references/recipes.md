@@ -460,10 +460,6 @@ Others can now use the same shell environment as long as they have [Nix installe
 
 Nix can be configured to use a binary cache with the [`substituters`](https://nix.dev/manual/nix/latest/command-ref/conf-file.html#conf-substituters) and [`trusted-public-keys`](https://nix.dev/manual/nix/latest/command-ref/conf-file.html#conf-trusted-public-keys) settings, either exclusively or in addition to cache.nixos.org.
 
-:::{tip}
-Follow the tutorial to [set up an HTTP binary cache](setup-http-binary-cache) and create a key pair for signing store objects.
-:::
-
 :::{warning}
 Nix will accept any requested store object signed with private keys corresponding to the configured public keys.
 Access to those private keys thus allows substituting arbitrary files into your Nix store.
@@ -504,6 +500,10 @@ On NixOS, Nix is configured through the [`nix.settings`](https://search.nixos.or
 }
 ```
 ::::
+
+## Next steps
+
+- Follow the tutorial to [set up your own HTTP binary cache](setup-http-binary-cache)
 
 :::{tip}
 Use [remote build machines](distributed-build-setup-tutorial) as preferred binary caches to reduce your external traffic.
