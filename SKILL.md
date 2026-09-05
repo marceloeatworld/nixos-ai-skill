@@ -1,17 +1,18 @@
 ---
 name: nixos
 description: Use when the user asks about NixOS, Nix language, flakes, nixpkgs, configuration.nix, nixos-rebuild, modules, options, overlays, derivations, mkDerivation, callPackage, home-manager, nix-darwin, devenv, packaging, cross-compilation, binary caches, garbage collection, NixOS containers, networking, firewall, systemd services, filesystems, LUKS, Wayland, X11, kernel, profiles, NixOS testing or VM tests, ISO images, Docker images, Raspberry Pi, Terraform, distributed builds, remote machines, pinning nixpkgs, rollback, generations, Nix Pills, or any topic related to configuring, packaging, deploying, or troubleshooting NixOS and the Nix ecosystem.
-version: 0.2.0
+metadata:
+  version: "0.2.0"
 ---
 
 # NixOS Documentation
 
 Complete reference for NixOS and the Nix ecosystem, auto-generated from official repositories:
 
-- [nix.dev](https://nix.dev/) — tutorials, guides, best practices
-- [NixOS Manual](https://nixos.org/manual/nixos/stable/) — from `NixOS/nixpkgs`
-- [Nix Pills](https://nixos.org/guides/nix-pills/) — progressive learning series
-- [Release Wiki](https://nixos.github.io/release-wiki/) — NixOS release process
+- [nix.dev](https://nix.dev/) - tutorials, guides, best practices
+- [NixOS Manual](https://nixos.org/manual/nixos/stable/) - from `NixOS/nixpkgs`
+- [Nix Pills](https://nixos.org/guides/nix-pills/) - progressive learning series
+- [Release Wiki](https://nixos.github.io/release-wiki/) - NixOS release process
 
 The `references/` directory contains full, unmodified documentation from those sources, updated daily.
 

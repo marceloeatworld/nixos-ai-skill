@@ -29,7 +29,7 @@ git clone https://github.com/marceloeatworld/nixos-ai-skill.git .cursor/skills/n
 git clone https://github.com/marceloeatworld/nixos-ai-skill.git .windsurf/skills/nixos
 
 # GitHub Copilot
-git clone https://github.com/marceloeatworld/nixos-ai-skill.git .github/copilot-instructions.d/nixos
+git clone https://github.com/marceloeatworld/nixos-ai-skill.git .github/skills/nixos
 
 # Cline
 git clone https://github.com/marceloeatworld/nixos-ai-skill.git .cline/skills/nixos
@@ -116,7 +116,7 @@ Answer with correct Nix syntax and configuration.nix / flake.nix examples
 
 The `SKILL.md` file acts as a routing table: it maps topics to reference files and provides fallback URLs for live fetching.
 
-The `references/` directory contains **full unmodified documentation** from four official NixOS repos — not summaries.
+The `references/` directory contains **full unmodified documentation** from four official NixOS repos - not summaries.
 
 ## How references stay up to date
 

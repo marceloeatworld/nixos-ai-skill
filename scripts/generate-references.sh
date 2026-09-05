@@ -4,10 +4,10 @@ set -euo pipefail
 # Generate NixOS skill reference files from official documentation repositories
 #
 # Sources:
-#   1. NixOS/nix.dev        — tutorials, guides, concepts, glossary
-#   2. NixOS/nixpkgs        — NixOS manual (nixos/doc/manual/)
-#   3. NixOS/nix-pills      — progressive Nix learning series
-#   4. NixOS/release-wiki   — NixOS release process (mdBook)
+#   1. NixOS/nix.dev        - tutorials, guides, concepts, glossary
+#   2. NixOS/nixpkgs        - NixOS manual (nixos/doc/manual/)
+#   3. NixOS/nix-pills      - progressive Nix learning series
+#   4. NixOS/release-wiki   - NixOS release process (mdBook)
 #
 # Usage: ./scripts/generate-references.sh
 
@@ -381,7 +381,7 @@ merge_pages "nixos-building-images.md" "Building NixOS Images" \
 echo ""
 echo "--- Nix Pills ---"
 
-merge_pages "nix-pills.md" "Nix Pills — A Progressive Learning Series" \
+merge_pages "nix-pills.md" "Nix Pills - A Progressive Learning Series" \
     "https://nixos.org/guides/nix-pills/" "NixOS/nix-pills" \
     "$PILLS/00-preface.md" \
     "$PILLS/01-why-you-should-give-it-a-try.md" \
