@@ -81,6 +81,10 @@ myst:
 
 # Continuous integration with GitHub Actions
 
+```{contributors}
+:authors: domenkozar
+```
+
 Set up [GitHub Actions](https://github.com/features/actions) as your continuous integration (CI) workflow for commits and pull requests.
 
 Nix lets CI build and cache developer environments for every project on every branch using binary caches.
@@ -628,6 +632,10 @@ $ nix-shell --pure
 
 (post-build-hooks)=
 # Setting up post-build hooks
+
+```{contributors}
+:authors: grahamc
+```
 
 This guide shows how to use the Nix [`post-build-hook`](https://nix.dev/manual/nix/2.22/command-ref/conf-file#conf-post-build-hook) configuration option to automatically upload build results to an [S3-compatible binary cache](https://nix.dev/manual/nix/2.22/store/types/s3-binary-cache-store).
 

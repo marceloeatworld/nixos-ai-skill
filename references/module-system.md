@@ -6,6 +6,11 @@
 
 # A basic module
 
+```{contributors}
+:authors: djacu
+:editors: fricklerhandwerk
+```
+
 What is a module?
 
 * A module is a function that takes an attribute set and returns an attribute set.
@@ -101,6 +106,11 @@ Running the script (`./eval.bash`) should show an output that matches what we ha
 # Module system deep dive
 
 Or: *Wrapping the world in modules*
+
+```{contributors}
+:authors: infinisil
+:editors: fricklerhandwerk, proofconstruction
+```
 
 In this tutorial you will follow an extensive demonstration of how to wrap an existing API with Nix modules.
 

@@ -8,6 +8,11 @@
 
 # Ad hoc shell environments
 
+```{contributors}
+:authors: domenkozar
+:editors: fricklerhandwerk
+```
+
 In a Nix shell environment, you can immediately use any program packaged with Nix, without installing it permanently.
 
 You can also share the command invoking such a shell with others, and it will work on all Linux distributions, WSL, and macOS[^1].
@@ -234,6 +239,10 @@ myst:
 (declarative-reproducible-envs)=
 # Declarative shell environments with `shell.nix`
 
+```{contributors}
+:authors: domenkozar, zmitchell
+:editors: fricklerhandwerk
+```
 ## Overview
 
 Declarative shell environments allow you to:
@@ -424,6 +433,11 @@ Exit the shell by typing `exit` or pressing `Ctrl`+`D`, then start it again with
 (reproducible-scripts)=
 
 # Reproducible interpreted scripts
+
+```{contributors}
+:authors: rapenne-s
+:editors: fricklerhandwerk
+```
 
 In this tutorial, you will learn how to use Nix to create and run reproducible interpreted scripts, also known as [shebang] scripts.
 

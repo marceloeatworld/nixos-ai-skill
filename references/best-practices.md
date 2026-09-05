@@ -4,6 +4,11 @@
 
 # Best practices
 
+```{contributors}
+:authors: domenkozar
+:editors: fricklerhandwerk, infinisil
+```
+
 ## URLs
 
 The Nix language syntax supports bare URLs, so one could write `https://example.com` instead of `"https://example.com"`

@@ -5,6 +5,10 @@
 (flakes-definition)=
 # Flakes
 
+```{contributors}
+:authors: kiara
+```
+
 ## What are flakes?
 
 Flakes offer an entrypoint file `flake.nix` aimed at sharing Nix code.
