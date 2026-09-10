@@ -141,6 +141,7 @@ An example of how to build an image:
   imports = [ "${modulesPath}/image/repart.nix" ];
 
   image.repart = {
+    enable = true;
     name = "image";
     partitions = {
       "esp" = {
@@ -274,6 +275,7 @@ in
       fileSystems."/".device = "/dev/disk/by-label/nixos";
 
       image.repart = {
+        enable = true;
         name = "image";
         partitions = {
           "esp" = {
