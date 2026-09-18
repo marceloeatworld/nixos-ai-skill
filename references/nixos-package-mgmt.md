@@ -18,11 +18,6 @@ NixOS has two distinct styles of package management:
     `nix-env` command. This style allows mixing packages from different
     Nixpkgs versions. It's the only choice for non-root users.
 
-```{=include=} sections
-declarative-packages.section.md
-ad-hoc-packages.section.md
-```
-
 ---
 
 # Declarative Package Management {#sec-declarative-package-mgmt}
@@ -66,11 +61,6 @@ configuration, use `pkgs` prefix (variable).
 
 To "uninstall" a package, remove it from
 [](#opt-environment.systemPackages) and run `nixos-rebuild switch`.
-
-```{=include=} sections
-customizing-packages.section.md
-adding-custom-packages.section.md
-```
 
 ---
 

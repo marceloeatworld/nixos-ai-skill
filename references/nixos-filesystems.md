@@ -44,13 +44,6 @@ dropping you to the emergency shell. You can make a mount asynchronous
 and non-critical by adding `options = [ "nofail" ];`.
 :::
 
-```{=include=} sections
-luks-file-systems.section.md
-sshfs-file-systems.section.md
-nfs-file-systems.section.md
-overlayfs.section.md
-```
-
 ---
 
 # LUKS-Encrypted File Systems {#sec-luks-file-systems}

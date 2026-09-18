@@ -17,12 +17,6 @@ manual](https://nixos.org/nix/manual/#chap-writing-nix-expressions), but
 here we give a short overview of the most important constructs useful in
 NixOS configuration files.
 
-```{=include=} sections
-config-file.section.md
-abstractions.section.md
-modularity.section.md
-```
-
 ---
 
 # NixOS Configuration File {#sec-configuration-file}
