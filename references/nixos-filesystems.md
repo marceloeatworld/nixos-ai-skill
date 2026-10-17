@@ -243,7 +243,7 @@ For example:
 {
   options = [
     (builtins.replaceStrings [ " " ] [ "\\040" ]
-      "ssh_command=${pkgs.openssh}/bin/ssh -v -L 8080:localhost:80"
+      "ssh_command=${lib.getExe pkgs.openssh} -v -L 8080:localhost:80"
     )
   ];
 
