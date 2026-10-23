@@ -166,11 +166,15 @@ Some advantages of virtual machines over containers are:
 
 - Virtual machines run a separate kernel, which allows testing kernel features
   (kernel modules, etc.).
-- Virtual machines support testing graphical applications on X11.
 - Virtual machines allow testing NixOS modules that use systemd's namespacing options (such as `ProtectSystem=` or `MountAPIVFS=`).
 - Virtual machines allow testing [`specialisation`](options.html#opt-specialisation).
   (Switching to a specialisation requires the creation of SUID/SGID wrappers, which is disallowed in `systemd-nspawn` within the Nix sandbox.)
 - Virtual machines allow the execution of `setuid` binaries.
+
+Both backends support testing graphical applications on X11. Virtual machines
+provide emulated display hardware, while containers use a headless X server.
+See [running tests interactively](#sec-nixos-test-interactive-graphical) for how
+to view container displays during debugging.
 
 Refer to the sections on [QEMU virtual machines](#ssec-nixos-test-qemu-vms)
 and [systemd-nspawn containers](#ssec-nixos-test-nspawn-containers) below
@@ -672,6 +676,32 @@ The function `test_script` executes the entire test script and drops you
 back into the test driver command line upon its completion. This allows
 you to inspect the state of the VMs after the test (e.g. to debug the
 test script).
+
+## Graphical tests {#sec-nixos-test-interactive-graphical}
+
+For `systemd-nspawn` containers with X11 enabled, `.driverInteractive` opens
+TigerVNC once the X server is ready. It connects to the container's default
+X11 display through an x11vnc Unix socket in the shared directory and accepts
+keyboard and mouse input.
+Closing the viewer leaves the container running.
+
+Because the nspawn driver runs as root, preserve the host graphical-session
+variables when starting it. For X11, use:
+
+```ShellSession
+$ sudo --preserve-env=DISPLAY,XAUTHORITY \
+    ./result/bin/nixos-test-driver
+```
+
+For a Wayland host session, use:
+
+```ShellSession
+$ sudo --preserve-env=WAYLAND_DISPLAY,XDG_RUNTIME_DIR \
+    ./result/bin/nixos-test-driver
+```
+
+If neither `DISPLAY` nor `WAYLAND_DISPLAY` is set, the driver skips the viewer.
+Ordinary test runs do not start a VNC server or viewer.
 
 ## Shell access to VMs in interactive mode {#sec-nixos-test-shell-access}
 
