@@ -88,7 +88,7 @@ in this role.
 # Release Editors
 
 The role of the release editors is a result of an action item from the
-21.11 release, where the satistfaction with the release notes was low.
+21.11 release, where the satisfaction with the release notes was low.
 
 The first release editor role was filled in the 22.05 release with a
 focus on the release notes and content for the homepage.
@@ -110,7 +110,7 @@ These packages are deemed "sufficiently complex" in the package ecosystem to
 warrant treating them differently when stabilizing the package set leading up to
 a stable release. Generally, these packages will be closely related to `stdenv`
 or fundamental to NixOS (e.g. `systemd`). The implications of 
-[RFC 0085](https://github.com/NixOS/rfcs/blob/master/rfcs/0085-nixos-release-stablization.md)
+[RFC 0085](https://github.com/NixOS/rfcs/blob/master/rfcs/0085-nixos-release-stabilization.md)
 are that these packages can not have breaking changes applied to them for six weeks
 leading up to a release date. This delay allows for changes in these packages to be
 sufficiently stabilized through usage on unstable, and allows for many staging
@@ -125,7 +125,7 @@ iterations for these fixes to be applied.
 
 ### Process for Modifying Release Critical Packages
 
-A release retrospective will take place after a release occured; one of the
+A release retrospective will take place after a release occurred; one of the
 topics of discussion will be to modify the list of critical packages.
 Packages may be added if they caused a significant amount of pain, or packages
 may be removed if their updates cause little to no pain. Pain in this case
@@ -140,7 +140,7 @@ These pages give an overview of the release process with as many details as ther
 
 ## Release Schedule
 
-With [RFC85](https://github.com/NixOS/rfcs/blob/master/rfcs/0085-nixos-release-stablization.md), the release schedule is largely already dictated below:
+With [RFC85](https://github.com/NixOS/rfcs/blob/master/rfcs/0085-nixos-release-stabilization.md), the release schedule is largely already dictated below:
 
 | Weeks from Release | Branches Affected | Events |
 | --- | --- | --- |
@@ -337,7 +337,7 @@ Now create the branches:
 
 ## Incorporate new branches
 
-We now incorporate the new branches into the workflows. The suggestion is two do step 1 and 2 in seperate PRs, as step 2. should be backported, as it's a CI change.
+We now incorporate the new branches into the workflows. The suggestion is two do step 1 and 2 in separate PRs, as step 2. should be backported, as it's a CI change.
 
 1. Create new [NixOS and Nixpkgs release notes file](https://github.com/NixOS/nixpkgs/commit/95cc97659c813256dc17d2905904144c1588e6ad) and PR this
 
@@ -512,7 +512,7 @@ Update metadata on the release branch, create its staging branches and tag the r
 
 ### Back on the master branch
 
-Now we prepare the master branch for the next release after this one. We do this in two steps, error-prone changes thorugh a PR and direct to allow for proper tagging.
+Now we prepare the master branch for the next release after this one. We do this in two steps, error-prone changes through a PR and direct to allow for proper tagging.
 
 Set NEXTVER to the release number after the one you released (i.e. when you release 24.05, `NEXTVER=24.11`).
 
@@ -964,7 +964,7 @@ Now create a PR that contains the following changes:
 1. Increase the `oldestSupportedRelease` in `lib/trivial.nix` to match
    the oldest supported release.
 
-   Note: This may need a seperate PR as it can be breaking.
+   Note: This may need a separate PR as it can be breaking.
 
    Examples: [22.05](https://github.com/NixOS/nixpkgs/pull/180152)
 
