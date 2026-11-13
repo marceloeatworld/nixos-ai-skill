@@ -42,7 +42,7 @@ shall be a container named `database` running PostgreSQL:
       { config, pkgs, ... }:
       {
         services.postgresql.enable = true;
-        services.postgresql.package = pkgs.postgresql_14;
+        services.postgresql.package = pkgs.postgresql_18;
       };
   };
 }
