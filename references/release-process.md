@@ -237,6 +237,22 @@ Instructions are provided as a comment in the script.
 You might need to add a comment that pings people again because GitHub seems
 to limit the amount of people that can be pinged per post.
 
+## Feature Freeze Exemptions
+
+Some package updates are exempt from the feature freeze:
+
+`gitlab` and `electron` receive monthly releases and each release is supported for
+three months only. They need to be kept up to date as they tend to receive fixes
+for security vulnerabilities regularly.
+
+`postgresql`'s [versioning policy](https://www.postgresql.org/support/versioning/)
+conflicts with the NixOS release schedule as first and final releases of major
+versions are released between September and November. The PostgreSQL maintainers
+need to submit some Pull Requests during feature freeze.
+The details are outlined in the
+[PostgreSQL section](https://nixos.org/manual/nixos/unstable/#module-services-postgres-versioning)
+of the NixOS manual.
+
 ## Pre-release cleanup
 
 The pre-release cleanup consists of multiple small cleanups to keep the release
@@ -261,18 +277,6 @@ cleanliness.
 ---
 
 # ZERO Hydra Failures
-
-## Hydra scaling
-
-The activity during ZHF is usually higher, so more build capacity is a good
-investment, to keep up with the pace of contributions.
-
-There is an autoscaler in place for aarch64-linux and x86_64-linux while the
-darwin allocations are pretty much static.
-
-If capacity issues are apparent, contact the infrastructure team on the
-`infra` repository (example: [21.11 example](https://github.com/NixOS/infra/issues/186)),
-and start a discussion in [#infra:nixos.org](https://matrix.to/#/#infra:nixos.org).
 
 ## ZHF issue
 
@@ -342,8 +346,9 @@ We now incorporate the new branches into the workflows. The suggestion is two do
 
     and PR this.
 
-1. Create the backport [label](https://github.com/NixOS/nixpkgs/labels) for the new staging branch:
+1. Create the backport [labels](https://github.com/NixOS/nixpkgs/labels) for the new staging branches:
    - `backport staging-24.05`
+   - `backport staging-next-24.05`
 
    Use the description `Backport PR automatically` and the color value `#0fafaa`
 
